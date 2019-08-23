@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Button from 'react-bootstrap/Button';
-import ButtonToolbar from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function Square(props) {
       return (
@@ -109,18 +111,22 @@ function Square(props) {
 
 
       return (
+        <Container>
         <div className="game">
-          <div className="game-board">
-            <Board 
-              squares={current.squares}
-              onClick={(i)=> this.handleClick(i)}
-            />
+          <Row className="justify-content-md-center">
+            <Col md="auto" className="game-board">
+              <Board 
+                squares={current.squares}
+                onClick={(i)=> this.handleClick(i)}
+              />
+            </Col>
+            <Col md="auto" className="game-info">
+              <div className='status'>{status}</div>
+              <ol>{moves}</ol>
+            </Col>
+          </Row>
           </div>
-          <div className="game-info">
-            <div className='status'>{status}</div>
-            <ol>{moves}</ol>
-          </div>
-        </div>
+        </Container>
       );
     }
   }
