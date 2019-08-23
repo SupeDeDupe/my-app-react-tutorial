@@ -3,7 +3,7 @@ body {
     margin: 20px;
   }
   
-  ol, ul {
+  ol {
     padding-left: 0px;
   }
   
@@ -40,11 +40,7 @@ body {
   .kbd-navigation .square:focus {
     background: #ddd;
   }
-
-  .game {
-    padding-bottom: 30px;
-  }
-
+  
   .game-info {
     margin-left: 20px;
     font-size: 20px;
