@@ -32,6 +32,10 @@ body {
     text-align: center;
     width: 60px;
   }
+
+  .square:hover {
+    background: lightpink;
+  }
   
   .square:focus {
     outline: none;

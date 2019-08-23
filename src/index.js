@@ -10,6 +10,7 @@ function Square(props) {
       return (
         <button 
             className="square" 
+            style={ props.value !== null ? { background: 'white' } : null}
             onClick={() => { props.onClick() }}
         >
           {props.value}
