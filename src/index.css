@@ -41,11 +41,6 @@ body {
     background: #ddd;
   }
   
-  .game {
-    margin-top: 40px;
-    left: 50%;
-  }
-  
   .game-info {
     margin-left: 20px;
     font-size: 20px;
@@ -53,4 +48,10 @@ body {
 
 .btn {
   margin: 5px;
+}
+
+h1 {
+  margin: 40px 0px 25px;
+  left: 50%;
+  text-align: center;
 }

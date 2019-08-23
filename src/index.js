@@ -112,6 +112,7 @@ function Square(props) {
 
       return (
         <Container>
+        <h1>Sarah's Tic Tac Toe</h1>
         <div className="game">
           <Row className="justify-content-md-center">
             <Col md="auto" className="game-board">
