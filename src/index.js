@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Button from 'react-bootstrap/Button';
+import ButtonToolbar from 'react-bootstrap/Button';
 
 function Square(props) {
       return (
@@ -93,9 +95,9 @@ function Square(props) {
           'Go to move #' + move :
           'Go to game start';
         return (
-          <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
-          </li>
+          <div>
+            <Button variant="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
+          </div>
         );
       });
 
@@ -115,7 +117,7 @@ function Square(props) {
             />
           </div>
           <div className="game-info">
-            <div>{status}</div>
+            <div className='status'>{status}</div>
             <ol>{moves}</ol>
           </div>
         </div>
