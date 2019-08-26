@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import {useSpring, animated} from 'react-spring'
 
 function Square(props) {
       return (
@@ -17,6 +18,11 @@ function Square(props) {
         </button>
       );
   }
+
+function Animate(props) {
+  const animatedProps = useSpring({opacity: 1, from: {opacity: 0}})
+  return <animated.div style={animatedProps}>{props.moves}</animated.div>
+}
   
   class Board extends React.Component {
 
@@ -124,7 +130,9 @@ function Square(props) {
             </Col>
             <Col md="auto" className="game-info">
               <div className='status'>{status}</div>
-              <ol>{moves}</ol>
+              <ol>
+                <Animate moves={moves}></Animate>
+              </ol>
             </Col>
           </Row>
           </div>
