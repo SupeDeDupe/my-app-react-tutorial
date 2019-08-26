@@ -34,9 +34,6 @@ function Animate(props) {
     );
   });
   return moves;
-
-  // const animatedProps = useSpring({opacity: 1, from: {opacity: 0}});
-  // return <animated.div style={animatedProps}>{props.moves}</animated.div>
 }
   
   class Board extends React.Component {
