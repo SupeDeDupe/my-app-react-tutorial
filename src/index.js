@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {useSpring, animated} from 'react-spring'
+import {Spring} from 'react-spring/renderprops'
 
 function Square(props) {
       return (
@@ -18,11 +18,6 @@ function Square(props) {
         </button>
       );
   }
-
-function Animate(props) {
-  const animatedProps = useSpring({opacity: 1, from: {opacity: 0}});
-  return <animated.div style={animatedProps}>{props.moves}</animated.div>
-}
   
   class Board extends React.Component {
 
@@ -104,9 +99,14 @@ function Animate(props) {
           'Go to move #' + move :
           'Go to game start';
         return (
-          <div key={move}>
-            <Button variant="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
-          </div>
+          <Spring
+                key={move}
+                from={{ opacity: 0 }}
+                to={{ opacity: 1 }}>
+                {props => <div style={props}>
+                  <Button variant="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
+                  </div>}
+          </Spring>
         );
       });
 
@@ -131,7 +131,7 @@ function Animate(props) {
             <Col md="auto" className="game-info">
               <div className='status'>{status}</div>
               <ol>
-                <Animate moves={moves}></Animate>
+                {moves}
               </ol>
             </Col>
           </Row>
