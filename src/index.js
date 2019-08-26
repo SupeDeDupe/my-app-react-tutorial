@@ -21,7 +21,22 @@ function Square(props) {
 
 function Animate(props) {
   const animatedProps = useSpring({opacity: 1, from: {opacity: 0}});
-  return <animated.div style={animatedProps}>{props.moves}</animated.div>
+
+  const moves = props.history.map((step, move) => {
+    
+    const desc = move ?
+      'Go to move #' + move :
+      'Go to game start';
+    return (
+        <animated.div style={animatedProps} key={move}>
+          <Button variant="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
+        </animated.div>
+    );
+  });
+  return moves;
+
+  // const animatedProps = useSpring({opacity: 1, from: {opacity: 0}});
+  // return <animated.div style={animatedProps}>{props.moves}</animated.div>
 }
   
   class Board extends React.Component {
@@ -99,17 +114,6 @@ function Animate(props) {
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
 
-      const moves = history.map((step, move) => {
-        const desc = move ?
-          'Go to move #' + move :
-          'Go to game start';
-        return (
-          <div key={move}>
-            <Button variant="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
-          </div>
-        );
-      });
-
       let status;
       if (winner)
         status = 'Winner: ' + winner;
@@ -131,7 +135,7 @@ function Animate(props) {
             <Col md="auto" className="game-info">
               <div className='status'>{status}</div>
               <ol>
-                <Animate moves={moves}></Animate>
+                <Animate history={history}></Animate>
               </ol>
             </Col>
           </Row>
