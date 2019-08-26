@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Button from 'react-bootstrap/Button';
@@ -20,7 +20,7 @@ function Square(props) {
   }
 
 function Animate(props) {
-  const animatedProps = useSpring({opacity: 1, from: {opacity: 0}})
+  const animatedProps = useSpring({opacity: 1, from: {opacity: 0}});
   return <animated.div style={animatedProps}>{props.moves}</animated.div>
 }
   
@@ -104,7 +104,7 @@ function Animate(props) {
           'Go to move #' + move :
           'Go to game start';
         return (
-          <div>
+          <div key={move}>
             <Button variant="primary" onClick={() => this.jumpTo(move)}>{desc}</Button>
           </div>
         );
